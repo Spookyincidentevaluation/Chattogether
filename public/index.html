@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Chat App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="user-list">
+            <h3>Users</h3>
+            <ul id="users"></ul>
+        </div>
+        <div class="chat-box">
+            <div id="chatMessages"></div>
+            <input type="text" id="messageInput" placeholder="Enter message" autocomplete="off">
+            <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+            <button id="privateButton"><i class="fas fa-user-secret"></i> Send Private</button>
+            <div id="typingIndicator" style="display:none;">Someone is typing...</div>
+        </div>
+    </div>
+
+    <audio id="messageSound" src="message-sound.mp3" preload="auto"></audio>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
