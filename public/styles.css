@@ -2,29 +2,34 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #74ebd5, #acb6e5); /* Gradient background */
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
     color: #333;
-    overflow: hidden;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
 }
 
 .chat-container {
     display: flex;
     height: 100vh;
+    overflow: hidden;
 }
 
 .user-list {
     width: 25%;
+    border-right: 2px solid #fff;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    border-right: 3px solid #eee;
-    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.5s;
 }
 
-.user-list h3 {
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 10px;
+.dark-mode .user-list {
+    background-color: rgba(30, 30, 30, 0.9);
+    border-right: 2px solid #444;
 }
 
 #users {
@@ -33,83 +38,133 @@ body {
 }
 
 #users li {
-    background-color: #ff9800;
     padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+    margin: 5px 0;
+    background-color: #ffcccb;
+    border-radius: 5px;
+    transition: background-color 0.5s;
 }
 
-#users li:hover {
-    background-color: #ff5722;
-    transform: translateY(-3px);
+.dark-mode #users li {
+    background-color: #333;
+    color: #fff;
 }
 
 .chat-box {
     width: 75%;
     padding: 20px;
-    background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.5s;
+}
+
+.dark-mode .chat-box {
+    background-color: rgba(30, 30, 30, 0.9);
 }
 
 #chatMessages {
-    background-color: #f0f4f8;
-    border: 2px solid #ddd;
+    flex-grow: 1;
+    border: 2px solid #fff;
     border-radius: 5px;
-    padding: 20px;
-    overflow-y: scroll;
-    height: 400px;
-    margin-bottom: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-#chatMessages div {
-    background-color: #ffeb3b;
     padding: 10px;
+    overflow-y: auto;
     margin-bottom: 10px;
-    border-radius: 5px;
-    animation: fadeIn 0.5s ease;
+    background-color: #f0f8ff;
+    transition: background-color 0.5s;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.dark-mode #chatMessages {
+    background-color: #222;
 }
 
 #messageInput {
     width: 70%;
     padding: 10px;
     border-radius: 5px;
-    border: 2px solid #2196f3;
-    transition: border 0.3s ease;
+    border: 1px solid #ccc;
+    transition: border-color 0.5s;
 }
 
-#messageInput:focus {
-    border-color: #1e88e5;
+.dark-mode #messageInput {
+    border: 1px solid #444;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
+    padding: 10px;
+    margin-left: 10px;
     border: none;
     border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
     cursor: pointer;
-    margin-left: 10px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.5s;
 }
 
-button:hover {
-    background-color: #388e3c;
-    transform: scale(1.05);
+.dark-mode button {
+    background-color: #007BFF;
 }
 
 #typingIndicator {
     font-style: italic;
-    color: #e91e63;
+    color: #ff6347;
     margin-top: 5px;
 }
 
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.dark-mode .modal-content {
+    background-color: #333;
+    color: #fff;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Add styles for welcome and leave messages */
+.welcome-message {
+    color: blue;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.2em;
+}
+
+.leave-message {
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 1.2em;
+}
