@@ -6,9 +6,11 @@ const cors = require('cors'); // Import cors
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
+
 // Use CORS middleware
 app.use(cors()); // Enable CORS for all requests
 app.use(express.static('public'));
+
 let users = {};
 
 io.on('connection', (socket) => {
@@ -16,13 +18,11 @@ io.on('connection', (socket) => {
 
     // Handle user joining with username
     socket.on('join', (username) => {
-        // Ensure the username is not empty and doesn't already exist
         if (!username || Object.values(users).find(user => user.username === username)) {
             socket.emit('usernameError', 'Username is either empty or already taken.');
         } else {
             users[socket.id] = { username };
             io.emit('userList', Object.values(users).map(user => user.username));
-            // Emit a message using the actual username
             socket.broadcast.emit('message', { username: username, text: `${username} joined the chat!`, type: 'join' });
         }
     });
@@ -52,7 +52,6 @@ io.on('connection', (socket) => {
         if (username) {
             delete users[socket.id];
             io.emit('userList', Object.values(users).map(user => user.username));
-            // Emit a message using the actual username
             socket.broadcast.emit('message', { username: username, text: `${username} left the chat!`, type: 'leave' });
         }
     });
