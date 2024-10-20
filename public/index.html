@@ -3,31 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colorful Chat App</title>
+    <title>Chat Application</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <div class="chat-container">
         <div class="user-list">
-            <h3>Users</h3>
+            <h2>Users</h2>
             <ul id="users"></ul>
+            <div>
+                <label for="darkModeToggle">Dark Mode</label>
+                <input type="checkbox" id="darkModeToggle">
+            </div>
         </div>
         <div class="chat-box">
+            <h2>Chat</h2>
             <div id="chatMessages"></div>
-            <input type="text" id="messageInput" placeholder="Enter message" autocomplete="off">
-            <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
-            <button id="privateButton"><i class="fas fa-user-secret"></i> Send Private</button>
-            <div id="typingIndicator" style="display:none;">Someone is typing...</div>
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button id="sendButton">Send</button>
+            <div id="typingIndicator" style="display:none;"></div>
         </div>
     </div>
 
-    <audio id="messageSound" src="message-sound.mp3" preload="auto"></audio>
+    <!-- Private Message Modal -->
+    <div id="privateMessageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Send Private Message to <span id="privateUser"></span></h2>
+            <input type="text" id="privateMessageInput" placeholder="Type your private message...">
+            <button id="sendPrivateMessageButton">Send</button>
+        </div>
+    </div>
+
+    <audio id="messageSound" src="notification.mp3" preload="auto"></audio>
 
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
-    <script>
-    const socket = io(); // Initialize the socket
-</script>
 </body>
 </html>
