@@ -1,43 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Application</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join Chat Together for real-time chatting and media sharing with friends!">
+  <meta name="keywords" content="chat, chat together, real-time chat, media sharing, private messages">
+  <title>Chat Together - Connect and Chat!</title>
+  
+  <!-- Link to Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- Add favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f0f4f8;
+      color: #333;
+    }
+
+    /* Header Section */
+    .header {
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      animation: fadeIn 1s;
+    }
+
+    .header p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      animation: fadeIn 1.5s;
+    }
+
+    .header .btn {
+      background-color: #fff;
+      color: #4e54c8;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .header .btn:hover {
+      background-color: #e1e1ff;
+      transform: scale(1.05);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    .feature-grid {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      width: 22%;
+      padding: 20px;
+      background-color: #f8f8ff;
+      margin: 10px;
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature i {
+      font-size: 40px;
+      color: #4e54c8;
+    }
+
+    .feature h3 {
+      font-size: 24px;
+      margin: 20px 0 10px;
+    }
+
+    .feature p {
+      font-size: 16px;
+    }
+
+    /* How It Works Section */
+    .how-it-works {
+      padding: 50px 0;
+      background-color: #e8e8ff;
+      text-align: center;
+    }
+
+    .how-it-works h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    .steps {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      width: 30%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 10px;
+      transition: transform 0.3s;
+    }
+
+    .step:hover {
+      transform: translateY(-10px);
+    }
+
+    .step i {
+      font-size: 40px;
+      color: #4e54c8;
+    }
+
+    .step h3 {
+      font-size: 24px;
+      margin: 20px 0 10px;
+    }
+
+    .step p {
+      font-size: 16px;
+    }
+
+    /* Testimonials Section */
+    .testimonials {
+      padding: 50px 0;
+      background-color: #f8f8ff;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      font-size: 36px;
+      margin-bottom: 40px;
+    }
+
+    .testimonial-grid {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .testimonial {
+      width: 30%;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial p {
+      font-size: 18px;
+      font-style: italic;
+      margin: 10px 0;
+    }
+
+    .testimonial h4 {
+      font-size: 16px;
+      color: #4e54c8;
+    }
+
+    /* Footer Section */
+    .footer {
+      background-color: #4e54c8;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .feature, .step, .testimonial {
+        width: 80%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="chat-container">
-        <div class="user-list">
-            <h2>Users</h2>
-            <ul id="users"></ul>
-            <div>
-                <label for="darkModeToggle">Dark Mode</label>
-                <input type="checkbox" id="darkModeToggle">
-            </div>
-        </div>
-        <div class="chat-box">
-            <h2>Chat</h2>
-            <div id="chatMessages"></div>
-            <input type="text" id="messageInput" placeholder="Type your message...">
-            <button id="sendButton">Send</button>
-            <div id="typingIndicator" style="display:none;"></div>
-        </div>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container">
+      <h1>Welcome to Chat Together</h1>
+      <p>Connect with friends, make new ones, and chat freely!</p>
+        <a href="chat.html" class="btn btn-primary">Start Chatting</a>
     </div>
+  </header>
 
-    <!-- Private Message Modal -->
-    <div id="privateMessageModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Send Private Message to <span id="privateUser"></span></h2>
-            <input type="text" id="privateMessageInput" placeholder="Type your private message...">
-            <button id="sendPrivateMessageButton">Send</button>
+  <!-- Features Section -->
+  <section class="features" id="start-chat">
+    <div class="container">
+      <h2>Why Choose Chat Together?</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <i class="fas fa-comments"></i>
+          <h3>Real-Time Messaging</h3>
+          <p>Experience instant chats with anyone online!</p>
         </div>
+        <div class="feature">
+          <i class="fas fa-user-secret"></i>
+          <h3>Private Messaging</h3>
+          <p>Securely chat with friends or new people.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-paperclip"></i>
+          <h3>Media Sharing</h3>
+          <p>Share images, videos, and files easily.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-lock"></i>
+          <h3>Safe Conversations</h3>
+          <p>Your chats are encrypted for security.</p>
+        </div>
+      </div>
+      <a href="chat.html" class="btn btn-secondary">Join Now</a>
     </div>
+  </section>
 
-    <audio id="messageSound" src="notification.mp3" preload="auto"></audio>
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <i class="fas fa-sign-in-alt"></i>
+          <h3>1. Sign Up</h3>
+          <p>Create an account and log in to start chatting.</p>
+        </div>
+        <div class="step">
+          <i class="fas fa-search"></i>
+          <h3>2. Find Friends</h3>
+          <p>Search for users and start a conversation.</p>
+        </div>
+        <div class="step">
+          <i class="fas fa-comment-dots"></i>
+          <h3>3. Start Chatting</h3>
+          <p>Join public chats or send private messages.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="script.js"></script>
+  <!-- Testimonials Section -->
+  <section class="testimonials">
+    <div class="container">
+      <h2>What Our Users Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial">
+          <p>"Chat Together has transformed the way I connect with friends!"</p>
+          <h4>- Alex</h4>
+        </div>
+        <div class="testimonial">
+          <p>"I love the media sharing feature. It's super easy!"</p>
+          <h4>- Jamie</h4>
+        </div>
+        <div class="testimonial">
+          <p>"The private messaging is so secure. I feel safe chatting!"</p>
+          <h4>- Sam</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <p>&copy; 2024 Chat Together. All rights reserved.</p>
+    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+  </footer>
 </body>
 </html>
