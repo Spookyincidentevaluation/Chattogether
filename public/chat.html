@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="user-list">
+            <h2>Users</h2>
+            <ul id="users"></ul>
+            <div>
+                <label for="darkModeToggle">Dark Mode</label>
+                <input type="checkbox" id="darkModeToggle">
+            </div>
+        </div>
+        <div class="chat-box">
+            <h2>Chat</h2>
+            <div id="chatMessages"></div>
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button id="sendButton">Send</button>
+            <div id="typingIndicator" style="display:none;"></div>
+        </div>
+    </div>
+
+    <!-- Private Message Modal -->
+    <div id="privateMessageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Send Private Message to <span id="privateUser"></span></h2>
+            <input type="text" id="privateMessageInput" placeholder="Type your private message...">
+            <button id="sendPrivateMessageButton">Send</button>
+        </div>
+    </div>
+
+    <audio id="messageSound" src="notification.mp3" preload="auto"></audio>
+
+    <!-- Add Socket.IO CDN -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
