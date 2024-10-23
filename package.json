@@ -4,3 +4,12 @@
     "socket.io": "^4.8.0"
   }
 }
+{
+  "dependencies": {
+    "mongodb": "^7.0.14",  // Example version, adjust accordingly
+    "express": "^4.18.2",
+    "socket.io": "^4.5.1",
+    "cors": "^2.8.5"
+  }
+}
+
