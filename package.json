@@ -9,7 +9,7 @@
   "dependencies": {
     "express": "^4.21.1",
     "socket.io": "^4.8.0",
-    "mongodb": "^5.7.0",  // Corrected version
+    "mongodb": "^5.7.0",
     "cors": "^2.8.5"
   }
 }
